@@ -1,0 +1,56 @@
+    /* Trint Styles */
+
+    .strikethrough {
+      text-decoration: line-through;
+    }
+
+    .annotation, .parannotation{
+      opacity: 0.7;
+    }
+
+    a.highlight {
+      background-color: yellow !important;
+    }
+
+    a.highlight.active {
+      background-color: lightGreen !important;
+    }
+
+    header {
+      font-size: 200%;
+    }
+
+    a {
+      cursor: pointer;
+      color: #000;
+    }
+
+    .active ~ a {
+      color: #666;
+    }
+
+    p.active ~ p a{
+      color: #666;
+    }
+
+    a.search-match {
+      background-color: pink !important;
+    }
+
+    sub:before {
+      content: '\231C';
+    }
+
+    sub.highlight-duration:before {
+      content: '\231D';
+    }
+
+    /* drop.js / trint-player-share.js  Twitter Styles */
+
+    a.sharelink {
+      color: #dddddd;
+    }
+
+    a.sharelink:hover {
+      color: #ffffff;
+    }
