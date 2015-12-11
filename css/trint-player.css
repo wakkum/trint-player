@@ -1,47 +1,47 @@
     /* Trint Styles */
 
-    .strikethrough {
+    #hypertranscript .strikethrough {
       text-decoration: line-through;
     }
 
-    .annotation, .parannotation{
+    #hypertranscript .annotation, #hypertranscript .parannotation{
       opacity: 0.7;
     }
 
-    a.highlight {
+    #hypertranscript span.highlight {
       background-color: yellow !important;
     }
 
-    a.highlight.active {
+    #hypertranscript span.highlight.active {
       background-color: lightGreen !important;
     }
 
-    header {
+    #hypertranscript  header {
       font-size: 200%;
     }
 
-    a {
+    #hypertranscript a {
       cursor: pointer;
       color: #000;
     }
 
-    .active ~ a {
+    #hypertranscript .active ~ span {
       color: #666;
     }
 
-    p.active ~ p a{
+    #hypertranscript p.active ~ p span {
       color: #666;
     }
 
-    a.search-match {
+    #hypertranscript span.search-match {
       background-color: pink !important;
     }
 
-    sub:before {
+    #hypertranscript :before {
       content: '\231C';
     }
 
-    sub.highlight-duration:before {
+    #hypertranscript sub.highlight-duration:before {
       content: '\231D';
     }
 
