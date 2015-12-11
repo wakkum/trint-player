@@ -16,7 +16,7 @@ var hyperaudiolite = (function () {
   }
 
   function init(mediaElementId) {
-    words = transcript.getElementsByTagName('a');
+    words = transcript.getElementsByTagName('span');
     paras = transcript.getElementsByTagName('p');
     player = document.getElementById(mediaElementId);
     paraIndex = 0;
