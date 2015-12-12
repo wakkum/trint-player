@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="css/trint-player.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-arrows-bounce-dark.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script>
+  <script src="https://platform.twitter.com/widgets.js"></script>
+</head>
+<body>
+
+  <p>
+    <form id="searchForm" style="float:right">
+      <input id="search" type="text" ><input type="submit" value="search">
+    </form>
+  </p>
+
+  {{#if video}}
+  <video id="hyperplayer" style="z-index: 5000000; position:relative;" src="{{video}}" type="audio/mp4" controls></video>
+  {{else}}
+  <audio id="hyperplayer" style="z-index: 5000000; position:relative;" src="{{audio}}" type="audio/mpeg" controls></audio>
+  {{/if}}
+
+  <div id="hypertranscript" style="overflow-y:scroll; height:600px; position:relative; border-style:dashed; border-width: 1px; border-color:#999; padding: 8px">
+  {{{transcript}}}
+  </div>
+
+  <script src="js/hyperaudio-lite.js"></script>
+  <script src="js/trint-player.js"></script>
+  <script src="js/trint-player-share.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/js/drop.js"></script>
+
+  <!-- Uncomment the following script if you require IE versions less than 10 to be supported or Opera Mini http://caniuse.com/#search=classlist ¯\_(ツ)_/¯ -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script> -->
+</body>
+</html>
