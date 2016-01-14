@@ -39,6 +39,9 @@ if (searchForm) {
 var words, wordsLen; //JSON
 var htmlWords, htmlWordsLen; //HTML
 
+htmlWords = document.querySelectorAll("[data-m]");
+htmlWordsLen = htmlWords.length;
+
 // Replace htmlWords and htmlWordsLen with words and wordsLen below if you want
 // to take word data directly from JSON.
 //
@@ -79,7 +82,7 @@ var searchPhrase = function (phrase) {
       // regex removes punctuation - NB for htmlWords case we also remove the space
 
       //if (phraseWords[j].toLowerCase() == Words[wordIndex].name.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"")) {
-      if (phraseWords[j].toLowerCase() == htmlWords[wordIndex].text.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~() ]/g,"")) {
+      if (phraseWords[j].toLowerCase() == htmlWords[wordIndex].innerText.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~() ]/g,"")) {
 
         //potentiallyMatched.push(words[wordIndex].time);
         potentiallyMatched.push(htmlWords[wordIndex].getAttribute("data-m"));
