@@ -21,32 +21,32 @@ function addShareTool() {
       }
 
       anchorNode = selection.anchorNode.parentNode;
-      extentNode = selection.extentNode.parentNode;
+      focusNode = selection.focusNode.parentNode;
 
       if (anchorNode.tagName.toLowerCase() == "span") {
          anchorNode = anchorNode.nextElementSibling;
       }
 
-      if (extentNode.tagName.toLowerCase() == "span") {
-         extentNode = extentNode.nextElementSibling;
+      if (focusNode.tagName.toLowerCase() == "span") {
+         focusNode = focusNode.nextElementSibling;
       }
 
       var anchorNodeTime = parseInt(anchorNode.getAttribute('data-m'), 10);
       var anchorNodeDuration = parseInt(anchorNode.getAttribute('data-d'), 10);
-      var extentNodeTime = parseInt(extentNode.getAttribute('data-m'), 10);
-      var extentNodeDuration = parseInt(extentNode.getAttribute('data-d'), 10);
+      var focusNodeTime = parseInt(focusNode.getAttribute('data-m'), 10);
+      var focusNodeDuration = parseInt(focusNode.getAttribute('data-d'), 10);
 
       // 1/10 of a second accuracy is fine for our needs
 
       anchorNodeTime = Math.floor(anchorNodeTime/100);
       anchorNodeDuration = Math.floor(anchorNodeDuration/100);
-      extentNodeTime = Math.floor(extentNodeTime/100);
-      extentNodeDuration = Math.floor(extentNodeDuration/100);
+      focusNodeTime = Math.floor(focusNodeTime/100);
+      focusNodeDuration = Math.floor(focusNodeDuration/100);
 
-      if (anchorNodeTime < extentNodeTime) {
-         params = "?s=" + anchorNodeTime + "&d=" + (extentNodeTime + extentNodeDuration - anchorNodeTime);
+      if (anchorNodeTime < focusNodeTime) {
+         params = "?s=" + anchorNodeTime + "&d=" + (focusNodeTime + focusNodeDuration - anchorNodeTime);
       } else {
-         params = "?s=" + extentNodeTime + "&d=" + (anchorNodeTime + anchorNodeDuration - extentNodeTime);
+         params = "?s=" + focusNodeTime + "&d=" + (anchorNodeTime + anchorNodeDuration - focusNodeTime);
       }
 
       drop = new Drop({
