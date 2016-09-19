@@ -1,4 +1,4 @@
-import Lib from "./modules/hyperaudio-lite";
+import HaLite from "./modules/hyperaudio-lite";
 import Core from "./modules/core";
 import Share from "./modules/share";
 
