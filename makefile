@@ -9,29 +9,34 @@ UMD_BUILD_FILES = \
 CLI_SUCCESS	= \033[1;32m✔
 CLI_RESET	= \033[0m
 
+default:	dev
+
 # Development
 
-default:	build
+watch:
+	npm run watch
+
+dev:	clean watch
 
 # Build
 
 build:	node_modules clean $(UMD_BUILD_FILES)
 
 trint-player.js:
-	@NODE_ENV=development BABEL_ENV=rollup $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
+	@NODE_ENV=development $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 trint-player.min.js:
-	@NODE_ENV=production BABEL_ENV=rollup $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
+	@NODE_ENV=production $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 # Other
 
 clean:
-	@rm -rf -- dist
+	@rm -rf -- dev dist
 
 purge:
-	@rm -rf -- node_modules dist
+	@rm -rf -- dev node_modules dist
 
 # Dependencies
 
