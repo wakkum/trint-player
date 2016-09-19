@@ -16,7 +16,7 @@ default:	dev
 watch:
 	npm run watch
 
-dev:	clean watch
+dev:	node_modules clean watch
 
 # Build
 
