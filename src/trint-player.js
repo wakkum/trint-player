@@ -2,8 +2,9 @@
 // import HALite from "./modules/hyperaudio-lite";
 // import Share from "./modules/share";
 
-// import Theme from "./themes/default/theme";
+import './themes/default/theme.css';
 
 export default function Player() {
   console.log('Hello Trint Player');
 }
+
