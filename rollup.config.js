@@ -3,7 +3,7 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
-import sass from 'rollup-plugin-sass';
+import eslint from 'rollup-plugin-eslint';
 import uglify from 'rollup-plugin-uglify';
 let version = require('./package.json').version;
 
@@ -20,19 +20,13 @@ let plugins = [
     include: 'node_modules/**',
     namedExports: { }
   }),
-  sass({
-    output: 'theme.css',
-    options: {
-      // includePaths: [],
-      indentedSyntax: true,
-      indentType: 'space',
-      indentWidth: 2,
-      outputStyle: 'expanded',
-      sourceComments: true
-    },
-  }),
   babel({
     exclude: 'node_modules/**'
+  }),
+  eslint({
+    exclude: [
+      // 'src/styles/**',
+    ]
   }),
   replace({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)

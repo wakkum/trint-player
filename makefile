@@ -15,11 +15,7 @@ default:	build
 
 # Build
 
-build:	node_modules clean lib $(UMD_BUILD_FILES) babel.min.js
-
-lib:
-	@$$(npm bin)/babel src --ignore __tests__ --out-dir $@
-	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
+build:	node_modules clean $(UMD_BUILD_FILES)
 
 trint-player.js:
 	@NODE_ENV=development BABEL_ENV=rollup $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
@@ -29,13 +25,13 @@ trint-player.min.js:
 	@NODE_ENV=production BABEL_ENV=rollup $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
-babel.min.js: node_modules/babel-standalone/babel.min.js
-	@cp $< $@
-
 # Other
 
 clean:
-	@rm -rf -- lib dist
+	@rm -rf -- dist
+
+purge:
+	@rm -rf -- node_modules dist
 
 # Dependencies
 

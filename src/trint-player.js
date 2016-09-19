@@ -1,6 +1,6 @@
-import Core from "./modules/core";
-import HALite from "./modules/hyperaudio-lite";
-import Share from "./modules/share";
+// import Core from "./modules/core";
+// import HALite from "./modules/hyperaudio-lite";
+// import Share from "./modules/share";
 
 // import Theme from "./themes/default/theme";
 
