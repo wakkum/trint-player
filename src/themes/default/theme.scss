@@ -1,56 +1,60 @@
 /* Trint Styles */
 
-#hypertranscript .strikethrough {
-  text-decoration: line-through;
+body {
+  font-weight: normal;
 }
 
-#hypertranscript .annotation, #hypertranscript .parannotation{
-  opacity: 0.7;
-}
+// #hypertranscript .strikethrough {
+//   text-decoration: line-through;
+// }
 
-#hypertranscript span.highlight {
-  background-color: yellow !important;
-}
+// #hypertranscript .annotation, #hypertranscript .parannotation{
+//   opacity: 0.7;
+// }
 
-#hypertranscript span.highlight.active {
-  background-color: lightGreen !important;
-}
+// #hypertranscript span.highlight {
+//   background-color: yellow !important;
+// }
 
-#hypertranscript  header {
-  font-size: 200%;
-}
+// #hypertranscript span.highlight.active {
+//   background-color: lightGreen !important;
+// }
 
-#hypertranscript a {
-  cursor: pointer;
-  color: #000;
-}
+// #hypertranscript  header {
+//   font-size: 200%;
+// }
 
-#hypertranscript .active ~ span {
-  color: #666;
-}
+// #hypertranscript a {
+//   cursor: pointer;
+//   color: #000;
+// }
 
-#hypertranscript p.active ~ p span {
-  color: #666;
-}
+// #hypertranscript .active ~ span {
+//   color: #666;
+// }
 
-#hypertranscript span.search-match {
-  background-color: pink !important;
-}
+// #hypertranscript p.active ~ p span {
+//   color: #666;
+// }
 
-#hypertranscript sub:before {
-  content: '\231C';
-}
+// #hypertranscript span.search-match {
+//   background-color: pink !important;
+// }
 
-#hypertranscript sub.highlight-duration:before {
-  content: '\231D';
-}
+// #hypertranscript sub:before {
+//   content: '\231C';
+// }
 
-/* drop.js / trint-player-share.js  Twitter Styles */
+// #hypertranscript sub.highlight-duration:before {
+//   content: '\231D';
+// }
 
-a.sharelink {
-  color: #dddddd;
-}
+// /* drop.js / trint-player-share.js  Twitter Styles */
 
-a.sharelink:hover {
-  color: #ffffff;
-}
+// a.sharelink {
+//   color: #dddddd;
+// }
+
+// a.sharelink:hover {
+//   color: #ffffff;
+// }

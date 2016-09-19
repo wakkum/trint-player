@@ -1,4 +1,4 @@
-function HaLite () {
+function HALite () {
 
   var hyperaudiolite = (function () {
 
@@ -152,4 +152,4 @@ function HaLite () {
 
 }
 
-module.exports = HaLite;
+export default HALite;

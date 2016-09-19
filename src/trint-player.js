@@ -1,7 +1,9 @@
-import HaLite from "./modules/hyperaudio-lite";
 import Core from "./modules/core";
+import HALite from "./modules/hyperaudio-lite";
 import Share from "./modules/share";
 
+// import Theme from "./themes/default/theme";
+
 export default function Player() {
-  console.log("Hello Trint Player")
+  console.log('Hello Trint Player');
 }
