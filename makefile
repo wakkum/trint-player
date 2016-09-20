@@ -30,6 +30,12 @@ trint-player.min.js:
 	@NODE_ENV=production $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$(CURRENT_VERSION)/$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
+# Release
+
+release:
+	build
+	npm run patch-release
+
 # Other
 
 clean:

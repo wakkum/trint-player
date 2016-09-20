@@ -10,6 +10,7 @@
     "dev": "rollup -c --watch --input=src/trint-player.js --output=dev/trint-player.js",
     "reload": "livereload 'build/'",
     "watch": "npm-run-all --parallel reload dev",
+    "patch-release": "npm version patch && git push --follow-tags",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
