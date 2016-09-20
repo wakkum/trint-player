@@ -1,3 +1,5 @@
+import hyperaudiolite from '../lib/hyperaudiolite';
+
 function Core () {
 
   function msToTime(duration) {

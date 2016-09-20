@@ -1,6 +1,4 @@
-function HALite () {
-
-  var hyperaudiolite = (function () {
+function hyperaudiolite () {
 
     var hal = {},
       transcript,
@@ -148,8 +146,6 @@ function HALite () {
 
     return hal;
 
-  })();
-
 }
 
-export default HALite;
+export default hyperaudiolite;

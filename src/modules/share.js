@@ -1,3 +1,7 @@
+// libs
+import tether from "tether";
+import drop from "tether-drop";
+
 function Share () {
 
   var selection = '';
