@@ -9,11 +9,12 @@ import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify';
 
 // postcss deps
+import atImport from 'postcss-import';
+import cssnano from 'cssnano';
+import cssnext from 'postcss-cssnext';
+import nested from 'postcss-nested';
 import postcss from 'rollup-plugin-postcss';
 import simplevars from 'postcss-simple-vars';
-import nested from 'postcss-nested';
-import cssnext from 'postcss-cssnext';
-import cssnano from 'cssnano';
 
 let plugins = [
   nodeResolve({
@@ -30,6 +31,9 @@ let plugins = [
       nested(),
       cssnext({ warnForDuplicates: false, }),
       cssnano(),
+      atImport({
+        path: ["src/css"]
+      })
     ],
     extensions: [ '.css' ],
   }),
