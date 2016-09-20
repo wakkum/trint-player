@@ -20,29 +20,29 @@ dev:	node_modules clean watch
 
 # Build
 
-build:	node_modules clean $(UMD_BUILD_FILES)
+dist:	node_modules clean $(UMD_BUILD_FILES)
 
 trint-player.js:
-	@NODE_ENV=development $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$(CURRENT_VERSION)/$@
+	@NODE_ENV=development $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 trint-player.min.js:
-	@NODE_ENV=production $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$(CURRENT_VERSION)/$@
+	@NODE_ENV=production $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 # Release
 
 release:
-	build
+	dist
 	npm run patch-release
 
 # Other
 
 clean:
-	@rm -rf -- dev dist
+	@rm -rf -- dist
 
 cleanall:
-	@rm -rf -- dev node_modules dist
+	@rm -rf -- node_modules dist
 
 # Dependencies
 
