@@ -3,9 +3,9 @@ import tether from "tether";
 import drop from "tether-drop";
 
 // modules
-// import Core from "./modules/core";
-// import HALite from "./modules/hyperaudio-lite";
-// import Share from "./modules/share";
+import Core from "./modules/core";
+import HALite from "./modules/hyperaudio-lite";
+import Share from "./modules/share";
 
 // styles
 import './themes/default/theme.css';

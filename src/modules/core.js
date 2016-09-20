@@ -2,37 +2,37 @@ function Core () {
 
   function msToTime(duration) {
     var milliseconds = parseInt((duration%1000)/100)
-          , seconds = parseInt((duration/1000)%60)
-          , minutes = parseInt((duration/(1000*60))%60)
-          , hours = parseInt((duration/(1000*60*60))%24);
+      , seconds = parseInt((duration/1000)%60)
+      , minutes = parseInt((duration/(1000*60))%60)
+      , hours = parseInt((duration/(1000*60*60))%24);
 
-    hours = (hours < 10) ? "0" + hours : hours;
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
+    hours = (hours < 10) ? '0' + hours : hours;
+    minutes = (minutes < 10) ? '0' + minutes : minutes;
+    seconds = (seconds < 10) ? '0' + seconds : seconds;
 
-    return hours + ":" + minutes + ":" + seconds;
+    return hours + ':' + minutes + ':' + seconds;
   }
 
   function escapeHtml(unsafe) {
     return unsafe
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
    }
 
-  var searchForm = document.getElementById("searchForm");
+  var searchForm = document.getElementById('searchForm');
 
   if (searchForm) {
     if(searchForm.addEventListener){ //Modern browsers
-      searchForm.addEventListener("submit", function(event){
-        searchPhrase(document.getElementById("search").value);
+      searchForm.addEventListener('submit', function(event){
+        searchPhrase(document.getElementById('search').value);
         event.preventDefault();
       }, false);
     }else if(searchForm.attachEvent){ //Old IE
       searchForm.attachEvent('onsubmit', function(event){
-        searchPhrase(document.getElementById("search").value);
+        searchPhrase(document.getElementById('search').value);
         event.preventDefault();
       });
     }
@@ -41,7 +41,7 @@ function Core () {
   var words, wordsLen; //JSON
   var htmlWords, htmlWordsLen; //HTML
 
-  htmlWords = document.querySelectorAll("[data-m]");
+  htmlWords = document.querySelectorAll('[data-m]');
   htmlWordsLen = htmlWords.length;
 
   // Replace htmlWords and htmlWordsLen with words and wordsLen below if you want
@@ -53,17 +53,17 @@ function Core () {
 
   var searchPhrase = function (phrase) {
 
-    var phraseWords = phrase.split(" ");
+    var phraseWords = phrase.split(' ');
     var phraseWordsLen = phraseWords.length;
     var matchedTimes = [];
 
     // clear matched times
 
-    var searchMatched = document.querySelectorAll(".search-match");
+    var searchMatched = document.querySelectorAll('.search-match');
     var searchMatchedLen = searchMatched.length;
 
     for (var l=0; l < searchMatchedLen; l++) {
-      searchMatched[l].classList.remove("search-match");
+      searchMatched[l].classList.remove('search-match');
     }
 
     //for (var i = 0; i < wordsLen; i++) {
@@ -84,10 +84,10 @@ function Core () {
         // regex removes punctuation - NB for htmlWords case we also remove the space
 
         //if (phraseWords[j].toLowerCase() == Words[wordIndex].name.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"")) {
-        if (phraseWords[j].toLowerCase() == htmlWords[wordIndex].innerHTML.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~() ]/g,"")) {
+        if (phraseWords[j].toLowerCase() == htmlWords[wordIndex].innerHTML.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~() ]/g,'')) {
 
           //potentiallyMatched.push(words[wordIndex].time);
-          potentiallyMatched.push(htmlWords[wordIndex].getAttribute("data-m"));
+          potentiallyMatched.push(htmlWords[wordIndex].getAttribute('data-m'));
           numWordsMatched++;
         } else {
           break;
@@ -106,18 +106,18 @@ function Core () {
 
     // only match the first word with that time (assuming times are unique)
     for (var k=0; k < matchedTimesLen; k++) {
-      document.querySelectorAll("[data-m='"+matchedTimes[k]+"']")[0].classList.add("search-match");
+      document.querySelectorAll('[data-m="'+matchedTimes[k]+'"]')[0].classList.add('search-match');
     }
   }
 
   window.onload = function() {
 
-    hyperaudiolite.init("hypertranscript", "hyperplayer");
+    hyperaudiolite.init('hypertranscript', 'hyperplayer');
 
     // playbackRate listener
 
-    var p = document.getElementById("pbr");
-    var cp = document.getElementById("currentPbr");
+    var p = document.getElementById('pbr');
+    var cp = document.getElementById('currentPbr');
 
     p.addEventListener('input',function(){
       cp.innerHTML = p.value;
