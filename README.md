@@ -1,14 +1,12 @@
-# trint-player
+# Trint Interactive Transcript Player
 
-## Building
+## Distribution package
 
-```
-$ make build
-```
+If you wish to use *trint-player* as it is, just grab the distribuition package located in `dist/*` — you’ll find the bundle there, including the minified `trint-player.min.js`.
 
-## Using
+## Running local copy
 
-- Require `dist/trint-player.min.js` on your site.
+Should you wish to fiddle with the source code, `src/*` is your playground: `$ cd` project directory run `$ make` and launch `static/index.html` in the browser.
 
 ### Example usage:
 
