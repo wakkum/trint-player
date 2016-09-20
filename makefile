@@ -35,7 +35,7 @@ trint-player.min.js:
 clean:
 	@rm -rf -- dev dist
 
-purge:
+cleanall:
 	@rm -rf -- dev node_modules dist
 
 # Dependencies
