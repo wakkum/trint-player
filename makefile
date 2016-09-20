@@ -16,11 +16,12 @@ default:	dev
 watch:
 	npm run watch
 
-dev:	node_modules clean watch
+dev:	node_modules watch
 
 # Build
 
 dist:	node_modules clean $(UMD_BUILD_FILES)
+	cp -p ./static/index.html ./dist/index.html
 
 trint-player.js:
 	@NODE_ENV=development $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
