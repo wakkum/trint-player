@@ -1,5 +1,11 @@
 SHELL:=/bin/bash --login
 
+# Default task
+
+default:	dev
+
+# Define some env vars
+
 NODE_VERSION=6.2.2
 
 export NVM_BIN=$(HOME)/.nvm/versions/node/v$(NODE_VERSION)/bin
@@ -12,11 +18,15 @@ $(NVM_BIN):
 
 node:	$(NVM_BIN)
 
-default:	dist
-
 # Init
 
 init: cleanall node_modules
+
+# Dev
+
+dev: node_modules
+	STYLEGUIDE_URI=`./static` \
+	$(NVM_BIN)/node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js
 
 # Build
 
@@ -41,5 +51,4 @@ cleanall:
 # Dependencies
 
 node_modules: node package.json
-	@npm install --ignore-scripts --cache-min 86400 --cache-max 432000
-	@/usr/bin/touch $@
+	$(NVM_BIN)/npm --cache-min 86400 --cache-max 432000 install

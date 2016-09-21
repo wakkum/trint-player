@@ -11,15 +11,15 @@ var path_src                  = resolve_here('./src');
 
 // Do the Magic
 var config = {
+  devtool: '#eval-source-map',
   entry: {
-    trintplayer: [ './src/trint-player.js' ],
+    trintplayer: [ 'webpack-dev-server/client?http://localhost:3003', 'webpack/hot/only-dev-server', './src/trint-player.js' ],
   },
   output: {
     chunkFilename : "[id].js",
     filename      : '[name].js',
     path          : resolve_here('dist'),
     publicPath    : '/',
-    libraryTarget: 'umd'
   },
   module: {
     loaders: [
@@ -50,10 +50,21 @@ var config = {
     extensions: ['', '.js', '.jsx', '.scss', '.md', '.css']
   },
   plugins: [
-    new StringReplacePlugin(),
     new ExtractTextPlugin('trint-player.css'),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new StringReplacePlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin()
   ],
+  devServer: {
+    colors      : true,
+    contentBase : './dist',
+    hot         : true,
+    inline      : true,
+    lazy        : false,
+    port        : 3003,
+    progress    : true
+  }
 };
 
 module.exports = config;
