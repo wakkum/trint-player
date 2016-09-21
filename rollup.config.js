@@ -32,7 +32,7 @@ let plugins = [
       cssnext({ warnForDuplicates: false, }),
       cssnano(),
       atImport({
-        path: ["src/css", "node_modules"]
+        path: ['src/css', 'node_modules']
       })
     ],
     extensions: [ '.css' ],
