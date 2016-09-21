@@ -7,8 +7,6 @@ import Share from "./modules/share";
 // styles
 import 'themes/default/theme.scss';
 
-
-
   // function msToTime(duration) {
   //   var milliseconds = parseInt((duration%1000)/100)
   //     , seconds = parseInt((duration/1000)%60)
@@ -31,103 +29,103 @@ import 'themes/default/theme.scss';
   //     .replace(/'/g, '&#039;');
   //  }
 
-  var searchForm = document.getElementById('searchForm');
+var searchForm = document.getElementById('searchForm');
 
-  if (searchForm) {
-    if(searchForm.addEventListener){ //Modern browsers
-      searchForm.addEventListener('submit', function(event){
-        searchPhrase(document.getElementById('search').value);
-        event.preventDefault();
-      }, false);
-    }else if(searchForm.attachEvent){ //Old IE
-      searchForm.attachEvent('onsubmit', function(event){
-        searchPhrase(document.getElementById('search').value);
-        event.preventDefault();
-      });
+if (searchForm) {
+  if(searchForm.addEventListener){ //Modern browsers
+    searchForm.addEventListener('submit', function(event){
+      searchPhrase(document.getElementById('search').value);
+      event.preventDefault();
+    }, false);
+  }else if(searchForm.attachEvent){ //Old IE
+    searchForm.attachEvent('onsubmit', function(event){
+      searchPhrase(document.getElementById('search').value);
+      event.preventDefault();
+    });
+  }
+}
+
+// var words, wordsLen; //JSON
+var htmlWords, htmlWordsLen; //HTML
+
+htmlWords = document.querySelectorAll('[data-m]');
+htmlWordsLen = htmlWords.length;
+
+// Replace htmlWords and htmlWordsLen with words and wordsLen below if you want
+// to take word data directly from JSON.
+//
+// When we export the player the transcript should probably be already inline
+// as HTML so as to search engine indexable, which is why the default
+// behaviour here is to use the HTML for the data as it will work in both cases.
+
+var searchPhrase = function (phrase) {
+
+  var phraseWords = phrase.split(' ');
+  var phraseWordsLen = phraseWords.length;
+  var matchedTimes = [];
+
+  // clear matched times
+
+  var searchMatched = document.querySelectorAll('.search-match');
+  var searchMatchedLen = searchMatched.length;
+
+  for (var l=0; l < searchMatchedLen; l++) {
+    searchMatched[l].classList.remove('search-match');
+  }
+
+  //for (var i = 0; i < wordsLen; i++) {
+  for (var i = 0; i < htmlWordsLen; i++) {
+
+    var numWordsMatched = 0;
+    var potentiallyMatched = [];
+
+    for (var j = 0; j < phraseWordsLen; j++) {
+
+      var wordIndex = i+numWordsMatched;
+
+      //if (wordIndex >= wordsLen) {
+      if (wordIndex >= htmlWordsLen) {
+        break;
+      }
+
+      // regex removes punctuation - NB for htmlWords case we also remove the space
+
+      //if (phraseWords[j].toLowerCase() == Words[wordIndex].name.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"")) {
+      if (phraseWords[j].toLowerCase() == htmlWords[wordIndex].innerHTML.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~() ]/g,'')) {
+
+        //potentiallyMatched.push(words[wordIndex].time);
+        potentiallyMatched.push(htmlWords[wordIndex].getAttribute('data-m'));
+        numWordsMatched++;
+      } else {
+        break;
+      }
+
+      // if the num of words matched equal the search phrase we have a winner!
+
+      if (numWordsMatched >= phraseWordsLen) {
+        matchedTimes = matchedTimes.concat(potentiallyMatched);
+      }
     }
   }
 
-  // var words, wordsLen; //JSON
-  var htmlWords, htmlWordsLen; //HTML
+  // display
+  var matchedTimesLen = matchedTimes.length;
 
-  htmlWords = document.querySelectorAll('[data-m]');
-  htmlWordsLen = htmlWords.length;
+  // only match the first word with that time (assuming times are unique)
+  for (var k=0; k < matchedTimesLen; k++) {
+    document.querySelectorAll('[data-m="'+matchedTimes[k]+'"]')[0].classList.add('search-match');
+  }
+};
 
-  // Replace htmlWords and htmlWordsLen with words and wordsLen below if you want
-  // to take word data directly from JSON.
-  //
-  // When we export the player the transcript should probably be already inline
-  // as HTML so as to search engine indexable, which is why the default
-  // behaviour here is to use the HTML for the data as it will work in both cases.
+window.onload = function() {
+  hyperaudiolite.init('hypertranscript', 'hyperplayer');
 
-  var searchPhrase = function (phrase) {
+  // playbackRate listener
+  var p = document.getElementById('pbr');
+  var cp = document.getElementById('currentPbr');
 
-    var phraseWords = phrase.split(' ');
-    var phraseWordsLen = phraseWords.length;
-    var matchedTimes = [];
-
-    // clear matched times
-
-    var searchMatched = document.querySelectorAll('.search-match');
-    var searchMatchedLen = searchMatched.length;
-
-    for (var l=0; l < searchMatchedLen; l++) {
-      searchMatched[l].classList.remove('search-match');
-    }
-
-    //for (var i = 0; i < wordsLen; i++) {
-    for (var i = 0; i < htmlWordsLen; i++) {
-
-      var numWordsMatched = 0;
-      var potentiallyMatched = [];
-
-      for (var j = 0; j < phraseWordsLen; j++) {
-
-        var wordIndex = i+numWordsMatched;
-
-        //if (wordIndex >= wordsLen) {
-        if (wordIndex >= htmlWordsLen) {
-          break;
-        }
-
-        // regex removes punctuation - NB for htmlWords case we also remove the space
-
-        //if (phraseWords[j].toLowerCase() == Words[wordIndex].name.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"")) {
-        if (phraseWords[j].toLowerCase() == htmlWords[wordIndex].innerHTML.toLowerCase().replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~() ]/g,'')) {
-
-          //potentiallyMatched.push(words[wordIndex].time);
-          potentiallyMatched.push(htmlWords[wordIndex].getAttribute('data-m'));
-          numWordsMatched++;
-        } else {
-          break;
-        }
-
-        // if the num of words matched equal the search phrase we have a winner!
-
-        if (numWordsMatched >= phraseWordsLen) {
-          matchedTimes = matchedTimes.concat(potentiallyMatched);
-        }
-      }
-    }
-
-    // display
-    var matchedTimesLen = matchedTimes.length;
-
-    // only match the first word with that time (assuming times are unique)
-    for (var k=0; k < matchedTimesLen; k++) {
-      document.querySelectorAll('[data-m="'+matchedTimes[k]+'"]')[0].classList.add('search-match');
-    }
-  };
-
-  window.onload = function() {
-    hyperaudiolite.init('hypertranscript', 'hyperplayer');
-
-    // playbackRate listener
-    var p = document.getElementById('pbr');
-    var cp = document.getElementById('currentPbr');
-
-    p.addEventListener('input',function(){
-      cp.innerHTML = p.value;
-      hyperplayer.playbackRate = p.value;
-    },false);
-  };
+  p.addEventListener('input',function(){
+    cp.innerHTML = p.value;
+    hyperplayer.playbackRate = p.value;
+  },false);
+};
