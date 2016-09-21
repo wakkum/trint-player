@@ -1,12 +1,18 @@
 // transcript.scss
 
 .PlayerTranscript {
-  font-family: $transcript-font;
+
   article {
   }
   header {
+    h1 {
+      font-family: $body-font;
+      font-size: 24px;
+      font-weight: bold;
+    }
   }
   section {
+    font-family: $transcript-font;
     p {
       span {
       }

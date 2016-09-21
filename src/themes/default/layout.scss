@@ -1,6 +1,9 @@
 // layout.scss
 
 .TrintPlayer {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 
   .PlayerRateControl {
 
@@ -10,21 +13,25 @@
 
   }
 
+  .PlayerVideo {
+    margin-bottom: $spacing;
+  }
+
   .PlayerTranscript {
     article {
     }
     header {
+      h1 {
+        margin-bottom: $spacing;
+      }
     }
     section {
       p {
+        margin-top: $spacing / 2;
         span {
         }
       }
     }
-  }
-
-  .PlayerVideo {
-
   }
 
   .PlayerAudio {
