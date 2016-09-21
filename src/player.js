@@ -5,7 +5,7 @@ import hyperaudiolite from "./lib/hyperaudiolite";
 import Share from "./modules/share";
 
 // styles
-// import './themes/default/theme.css';
+import 'themes/default/theme.scss';
 
 
 

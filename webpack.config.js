@@ -34,9 +34,9 @@ var config = {
         ]})
       },
       { test: /\.(js)$/, loaders: ['babel?presets[]=es2015'], include: [resolve_here("src")] },
-      { test: /\.(sass|scss)$/, loader: ExtractTextPlugin.extract('style-loader', 'css!postcss!sass?outputStyle=compressed&sourceMap&' +
+      { test: /\.(sass|scss)$/, loader: 'style!css!postcss!sass?outputStyle=compressed&sourceMap&' +
         'includePaths[]=' + path_src
-      )},
+      },
       { test: /\.(png|jpg|woff|svg)$/, loader: 'url-loader?limit=100000' },
     ],
     noParse: /\.min\.js$/
