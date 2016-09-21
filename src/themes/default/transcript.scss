@@ -14,8 +14,42 @@
   section {
     font-family: $transcript-font;
     p {
+      font-size: 16px;
+      line-height: 32px;
+      position: relative;
+      &.active {
+        &:before {
+          border-left: 5px solid #f3f2f3;
+          bottom: 0;
+          content: " ";
+          display: block;
+          left: $spacing * -1;
+          position: absolute;
+          top: 0;
+        }
+      }
       span {
+        cursor: pointer;
+        &:hover {
+        }
+        &.highlight {
+          background: $hightlight-background;
+        }
+        &.active {
+        }
+        &.search-match {
+          background: $search-background;
+        }
       }
     }
+    .strikethrough {
+      text-decoration: line-through;
+    }
   }
+
+  p.active ~ p span,
+  span.active ~ span {
+    color: $inactive-color;
+  }
+
 }

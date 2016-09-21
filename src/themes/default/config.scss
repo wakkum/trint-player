@@ -1,5 +1,9 @@
 // config.scss
 
-$body-font: 'Lato', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-$transcript-font: 'PT Mono', monospace;
-$spacing: 20px;
+$body-font             : 'Lato', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+$transcript-font       : 'PT Mono', monospace;
+$spacing               : 20px;
+$hightlight-background : linear-gradient(rgba(#FFCF00,0.4),rgba(#FFCF00,0.5));
+$search-background     : rgba(#3BAAFF,0.5);
+$body-color            : #544b5e;
+$inactive-color        : rgba(#342a40,0.6);

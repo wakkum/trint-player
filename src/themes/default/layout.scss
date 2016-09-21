@@ -4,6 +4,7 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  padding: $spacing;
 
   .PlayerRateControl {
 
@@ -27,7 +28,7 @@
     }
     section {
       p {
-        margin-top: $spacing / 2;
+        margin-top: $spacing;
         span {
         }
       }
