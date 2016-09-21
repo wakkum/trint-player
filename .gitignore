@@ -2,8 +2,5 @@
 .node-version
 .sass-cache
 /*.log
-/babel*.js
-dev
 dist
 node_modules
-static/trint-player*.*

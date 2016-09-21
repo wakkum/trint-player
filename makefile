@@ -1,35 +1,28 @@
-SHELL	:= /bin/bash
+SHELL:=/bin/bash --login
 
-CURRENT_VERSION	= $(shell node -p 'require("./package.json").version')
+NODE_VERSION=6.2.2
 
-UMD_BUILD_FILES = \
-	trint-player.js \
-	trint-player.min.js
+export NVM_BIN=$(HOME)/.nvm/versions/node/v$(NODE_VERSION)/bin
+export NVM_DIR=$(HOME)/.nvm
+export NVM_PATH=$(HOME)/.nvm/versions/node/v$(NODE_VERSION)/lib/node
+export PATH:=$(NVM_BIN):$(PATH)
 
-CLI_SUCCESS	= \033[1;32m✔
-CLI_RESET	= \033[0m
+$(NVM_BIN):
+	source $(NVM_DIR)/nvm.sh; nvm install $(NODE_VERSION)
 
-default:	dev
+node:	$(NVM_BIN)
 
-# Development
+default:	dist
 
-watch:
-	npm run watch
+# Init
 
-dev:	node_modules watch
+init: cleanall node_modules
 
 # Build
 
-dist:	node_modules clean $(UMD_BUILD_FILES)
+dist:	node_modules clean
+	$(NVM_BIN)/node ./node_modules/webpack/bin/webpack.js -b --optimize-minimize --bail --config webpack.build.config.js
 	cp -p ./static/index.html ./dist/index.html
-
-trint-player.js:
-	@NODE_ENV=development $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
-	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
-
-trint-player.min.js:
-	@NODE_ENV=production $$(npm bin)/rollup src/trint-player --config=rollup.config.js --output=dist/$@
-	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 # Release
 
@@ -47,6 +40,6 @@ cleanall:
 
 # Dependencies
 
-node_modules: package.json
-	@npm install --ignore-scripts
+node_modules: node package.json
+	@npm install --ignore-scripts --cache-min 86400 --cache-max 432000
 	@/usr/bin/touch $@
