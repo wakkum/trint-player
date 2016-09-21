@@ -59,10 +59,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export default {
-  format: 'cjs',
   sourceMap: true,
-  format: 'umd',
-  moduleName: 'trint-player',
+  format: 'iife',
+  moduleName: 'TrintPlayer',
   plugins: plugins,
   globals: {
     'babel-standalone': 'Babel'
