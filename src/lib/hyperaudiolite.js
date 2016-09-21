@@ -6,7 +6,8 @@ function hyperaudiolite () {
       player,
       paraIndex,
       start,
-      end;
+      end,
+      paras;
 
     function getParameter(name) {
       name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -26,7 +27,6 @@ function hyperaudiolite () {
       player.addEventListener('timeupdate', checkPlayHead, false);
 
       //check for queryString params
-
       start = getParameter('s');
 
       if (!isNaN(parseFloat(start))) {
@@ -49,10 +49,8 @@ function hyperaudiolite () {
       }
     }
 
-    function checkPlayHead(e) {
-
+    function checkPlayHead() {
       //check for end time of shared piece
-
       if (end && (end/10 < player.currentTime)) {
         player.pause();
         end = null;
@@ -68,10 +66,9 @@ function hyperaudiolite () {
       }
 
       // Establish current paragraph index
-
       var currentParaIndex;
 
-      for (i = 1; i < words.length; i++) {
+      for (var i = 1; i < words.length; i++) {
         if (parseInt(words[i].getAttribute('data-m'))/1000 > player.currentTime) {
 
           // TODO: look for a better way of doing this
@@ -111,7 +108,7 @@ function hyperaudiolite () {
     hal.init = function(transcriptId, mediaElementId) {
       transcript = document.getElementById(transcriptId);
       init(mediaElementId);
-    }
+    };
 
     hal.loadTranscript = function(url) {
       var xmlhttp;
@@ -126,23 +123,21 @@ function hyperaudiolite () {
 
       xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 ) {
-          if(xmlhttp.status == 200){
+          if (xmlhttp.status == 200){
             transcript = document.getElementById('hypertranscript');
             transcript.innerHTML = xmlhttp.responseText;
             init();
-          }
-          else if(xmlhttp.status == 400) {
-            alert('There was an error 400')
-          }
-          else {
-            alert('something else other than 200 was returned')
+          } else if(xmlhttp.status == 400) {
+            alert('There was an error 400');
+          } else {
+            alert('something else other than 200 was returned');
           }
         }
-      }
+      };
 
       xmlhttp.open('GET', url, true);
       xmlhttp.send();
-    }
+    };
 
     return hal;
 

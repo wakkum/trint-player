@@ -10,27 +10,27 @@ import './themes/default/theme.css';
 
 export default function Player() {
 
-  function msToTime(duration) {
-    var milliseconds = parseInt((duration%1000)/100)
-      , seconds = parseInt((duration/1000)%60)
-      , minutes = parseInt((duration/(1000*60))%60)
-      , hours = parseInt((duration/(1000*60*60))%24);
+  // function msToTime(duration) {
+  //   var milliseconds = parseInt((duration%1000)/100)
+  //     , seconds = parseInt((duration/1000)%60)
+  //     , minutes = parseInt((duration/(1000*60))%60)
+  //     , hours = parseInt((duration/(1000*60*60))%24);
+  //
+  //   hours = (hours < 10) ? '0' + hours : hours;
+  //   minutes = (minutes < 10) ? '0' + minutes : minutes;
+  //   seconds = (seconds < 10) ? '0' + seconds : seconds;
+  //
+  //   return hours + ':' + minutes + ':' + seconds;
+  // }
 
-    hours = (hours < 10) ? '0' + hours : hours;
-    minutes = (minutes < 10) ? '0' + minutes : minutes;
-    seconds = (seconds < 10) ? '0' + seconds : seconds;
-
-    return hours + ':' + minutes + ':' + seconds;
-  }
-
-  function escapeHtml(unsafe) {
-    return unsafe
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-   }
+  // function escapeHtml(unsafe) {
+  //   return unsafe
+  //     .replace(/&/g, '&amp;')
+  //     .replace(/</g, '&lt;')
+  //     .replace(/>/g, '&gt;')
+  //     .replace(/"/g, '&quot;')
+  //     .replace(/'/g, '&#039;');
+  //  }
 
   var searchForm = document.getElementById('searchForm');
 
@@ -48,7 +48,7 @@ export default function Player() {
     }
   }
 
-  var words, wordsLen; //JSON
+  // var words, wordsLen; //JSON
   var htmlWords, htmlWordsLen; //HTML
 
   htmlWords = document.querySelectorAll('[data-m]');
@@ -118,14 +118,12 @@ export default function Player() {
     for (var k=0; k < matchedTimesLen; k++) {
       document.querySelectorAll('[data-m="'+matchedTimes[k]+'"]')[0].classList.add('search-match');
     }
-  }
+  };
 
   window.onload = function() {
-
     hyperaudiolite.init('hypertranscript', 'hyperplayer');
 
     // playbackRate listener
-
     var p = document.getElementById('pbr');
     var cp = document.getElementById('currentPbr');
 
@@ -133,11 +131,10 @@ export default function Player() {
       cp.innerHTML = p.value;
       hyperplayer.playbackRate = p.value;
     },false);
-
-  }
+  };
 }
 
-if (ENV !== 'production') {
+if (typeof ENV === 'undefined' || ENV !== 'production') {
   // Enable LiveReload
   document.write(
     '<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>'
