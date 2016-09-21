@@ -1,7 +1,7 @@
 /* Trint Styles */
 
-@import "node_modules/tether-drop/src/css/drop-theme-basic.css";
-@import "node_modules/tether-drop/src/css/drop-theme-arrows-bounce-dark.css";
+@import 'node_modules/tether-drop/src/css/drop-theme-basic.css';
+@import 'node_modules/tether-drop/src/css/drop-theme-arrows-bounce-dark.css';
 
 body {
   font-weight: normal;
