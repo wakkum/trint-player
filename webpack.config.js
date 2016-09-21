@@ -13,12 +13,12 @@ var path_src                  = resolve_here('./src');
 var config = {
   devtool: '#eval-source-map',
   entry: {
-    trintplayer: [ 'webpack-dev-server/client?http://localhost:3003', 'webpack/hot/only-dev-server', './src/trint-player.js' ],
+    player: [ 'webpack-dev-server/client?http://localhost:3003', 'webpack/hot/only-dev-server', './src/player.js' ],
   },
   output: {
     chunkFilename : "[id].js",
     filename      : '[name].js',
-    path          : resolve_here('dist'),
+    path          : resolve_here('static'),
     publicPath    : '/',
   },
   module: {
@@ -50,7 +50,6 @@ var config = {
     extensions: ['', '.js', '.jsx', '.scss', '.md', '.css']
   },
   plugins: [
-    new ExtractTextPlugin('trint-player.css'),
     new StringReplacePlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
@@ -58,7 +57,7 @@ var config = {
   ],
   devServer: {
     colors      : true,
-    contentBase : './dist',
+    contentBase : './static',
     hot         : true,
     inline      : true,
     lazy        : false,

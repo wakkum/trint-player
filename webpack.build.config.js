@@ -12,7 +12,7 @@ var path_src                  = resolve_here('./src');
 // Do the Magic
 var config = {
   entry: {
-    trintplayer: [ './src/trint-player.js' ],
+    player: [ './src/player.js' ],
   },
   output: {
     chunkFilename : "[id].js",
@@ -51,7 +51,7 @@ var config = {
   },
   plugins: [
     new StringReplacePlugin(),
-    new ExtractTextPlugin('trint-player.css'),
+    new ExtractTextPlugin('player.css'),
     new webpack.optimize.OccurenceOrderPlugin(),
   ],
 };

@@ -1,6 +1,5 @@
 // libs
 import hyperaudiolite from './lib/hyperaudiolite';
-// import velocity from "velocity";
 
 // modules
 import Share from "./modules/share";
