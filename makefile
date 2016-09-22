@@ -51,5 +51,5 @@ cleanall:
 # Dependencies
 
 node_modules: node package.json
-	npm rebuild node-sass
 	$(NVM_BIN)/npm --cache-min 86400 --cache-max 432000 install
+	npm rebuild node-sass
